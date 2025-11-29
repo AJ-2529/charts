@@ -184,7 +184,7 @@ def main():
 
     with col_right:
         st.subheader("Chart controls")
-        period = st.selectbox("Download period (yfinance)", options=["1mo", "3mo", "6mo", "1y", "2y", "5y", "10y", "max"], index=7)
+        period = st.selectbox("Download period", options=["1mo", "3mo", "6mo", "1y", "2y", "5y", "10y", "max"], index=7)
         st.checkbox("Show Volume", value=True, key="show_volume")
         st.checkbox("Show SMA", value=True, key="show_sma")
         sma_window = st.slider("SMA window", min_value=5, max_value=200, value=20, step=1)
@@ -193,7 +193,7 @@ def main():
     with col_left:
         st.subheader("Ticker")
         ticker = st.text_input("Enter ticker (eg. MSFT or ^NSEI)", placeholder="Type ticker and press Download")
-        download_btn = st.button("Download & Load ticker")
+        download_btn = st.button("Load Ticker")
 
     df = None
     load_error = None
@@ -208,7 +208,7 @@ def main():
             with st.spinner(f"Downloading {ticker} ..."):
                 csv_path = download_ticker_csv(ticker, period=period)
                 df = load_csv_path(csv_path)
-                st.success(f"Downloaded and saved → {csv_path} ({len(df)} rows)")
+                st.success(f"All The Best!!!")
         except Exception as e:
             load_error = f"Download failed: {e}"
 
